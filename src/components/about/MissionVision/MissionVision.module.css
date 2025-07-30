@@ -1,0 +1,476 @@
+/* MissionVision.module.css - Mobile Optimized */
+
+/* Root variables for consistent theming */
+:root {
+  --primary-color: #0062cc;
+  --secondary-color: #0099ff;
+  --text-dark: #333;
+  --text-medium: #555;
+  --text-light: #666;
+  --bg-light: #f8f9fa;
+  --bg-lighter: #e9ecef;
+  --white: #fff;
+  --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-medium: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --shadow-heavy: 0 16px 40px rgba(0, 0, 0, 0.16);
+  --border-radius: 12px;
+  --transition-fast: 0.2s ease;
+  --transition-medium: 0.3s ease;
+  --transition-slow: 0.4s ease;
+}
+
+.missionVisionSection {
+  padding: 4rem 1rem;
+  background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-lighter) 100%);
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s var(--transition-medium);
+}
+
+.missionVisionSection.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.heading {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.heading h2 {
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  margin-bottom: 1rem;
+  color: var(--text-dark);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.underline {
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  border-radius: 2px;
+  margin: 0 auto 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.underline::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+.heading p {
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  color: var(--text-medium);
+  margin: 0;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 2rem;
+  justify-content: center;
+  overflow-x: auto;
+  padding: 0.5rem 0 1rem;
+  scroll-behavior: smooth;
+}
+
+.cards::-webkit-scrollbar {
+  height: 4px;
+}
+
+.cards::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+}
+
+.cards::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  border-radius: 2px;
+}
+
+.card {
+  flex: 1;
+  min-width: 280px;
+  max-width: 450px;
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  box-shadow: var(--shadow-light);
+  transition: all var(--transition-medium);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  opacity: 0;
+  transform: translateY(40px);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.card.cardVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.missionCard {
+  animation-delay: 0.1s;
+}
+
+.visionCard {
+  animation-delay: 0.2s;
+}
+
+/* Enhanced hover and touch states */
+.card:hover,
+.card:focus-within {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-heavy);
+}
+
+.card:active {
+  transform: translateY(-4px);
+  transition: all 0.1s ease;
+}
+
+.cardOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  opacity: 0;
+  transition: opacity var(--transition-medium);
+  z-index: -1;
+}
+
+.card:hover .cardOverlay,
+.card:focus-within .cardOverlay {
+  opacity: 0.03;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+  transition: width var(--transition-medium) ease;
+  z-index: 0;
+}
+
+.card:hover::before,
+.card:focus-within::before {
+  width: 100%;
+  opacity: 0.05;
+}
+
+.cardIcon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 1.5rem;
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-medium);
+  position: relative;
+  z-index: 2;
+}
+
+.cardIcon svg {
+  width: 100%;
+  height: 100%;
+  stroke-width: 2;
+}
+
+.card:hover .cardIcon,
+.card:focus-within .cardIcon {
+  transform: scale(1.1) rotate(5deg);
+  color: var(--secondary-color);
+}
+
+.cardContent {
+  position: relative;
+  z-index: 2;
+}
+
+.cardContent h3 {
+  font-size: clamp(1.3rem, 4vw, 1.6rem);
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.cardContent h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  transition: width var(--transition-medium);
+}
+
+.card:hover .cardContent h3::after,
+.card:focus-within .cardContent h3::after {
+  width: 60px;
+}
+
+.cardContent p {
+  font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+  line-height: 1.6;
+  color: whitesmoke;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin: 0;
+  text-align: justify;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.statement {
+  margin-top: 2rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: var(--border-radius);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: var(--shadow-light);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s var(--transition-medium);
+}
+
+.statement.cardVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.statement blockquote {
+  margin: 0;
+  padding: 0;
+  border: none;
+  font-style: italic;
+  position: relative;
+}
+
+.statement blockquote::before {
+  content: '"';
+  font-size: 4rem;
+  color: var(--primary-color);
+  position: absolute;
+  top: -1rem;
+  left: -1rem;
+  opacity: 0.3;
+  font-family: serif;
+}
+
+.statement blockquote p {
+  font-size: clamp(1.1rem, 3vw, 1.3rem);
+  line-height: 1.7;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+  text-align: center;
+  font-weight: 400;
+}
+
+.statement cite {
+  display: block;
+  text-align: center;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  color: var(--text-medium);
+  font-style: normal;
+  font-weight: 500;
+  margin-top: 1rem;
+}
+
+/* Background decorative elements */
+.missionVisionSection::before {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(0, 98, 204, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  top: -150px;
+  left: -150px;
+  z-index: 0;
+}
+
+.missionVisionSection::after {
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(0, 153, 255, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  bottom: -100px;
+  right: -100px;
+  z-index: 0;
+}
+
+/* Tablet optimizations */
+@media (max-width: 1024px) {
+  .missionVisionSection {
+    padding: 3rem 1.5rem;
+  }
+  
+  .container {
+    gap: 2rem;
+  }
+  
+  .cards {
+    gap: 1.5rem;
+  }
+  
+  .card {
+    min-width: 260px;
+    padding: 1.8rem;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .missionVisionSection {
+    padding: 2.5rem 1rem;
+  }
+  
+  .container {
+    gap: 1.5rem;
+  }
+  
+  .heading {
+    margin-bottom: 1rem;
+  }
+  
+  .cards {
+    flex-direction: column;
+    gap: 1.5rem;
+    overflow-x: visible;
+  }
+  
+  .card {
+    min-width: auto;
+    max-width: 100%;
+    padding: 1.5rem;
+  }
+  
+  .cardContent p {
+    text-align: left;
+  }
+  
+  .statement {
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  
+  .statement blockquote::before {
+    font-size: 3rem;
+    top: -0.5rem;
+    left: -0.5rem;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  .missionVisionSection {
+    padding: 2rem 0.75rem;
+  }
+  
+  .card {
+    padding: 1.25rem;
+  }
+  
+  .cardIcon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 1rem;
+  }
+  
+  .statement {
+    padding: 1.25rem;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .card {
+    border: 2px solid var(--text-dark);
+  }
+  
+  .cardContent h3,
+  .cardIcon {
+    color: var(--text-dark);
+  }
+}
+
+/* Focus states for keyboard navigation */
+.card:focus-visible {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+  .missionVisionSection {
+    padding: 1rem;
+    background: white;
+    box-shadow: none;
+  }
+  
+  .card {
+    box-shadow: none;
+    border: 1px solid #ddd;
+    break-inside: avoid;
+  }
+  
+  .card:hover,
+  .card:focus-within {
+    transform: none;
+    box-shadow: none;
+  }
+}

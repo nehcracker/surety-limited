@@ -1,0 +1,76 @@
+.textareaWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-color, #333);
+  margin-bottom: 0.5rem;
+}
+
+.required {
+  color: var(--error-color, #d32f2f);
+  margin-left: 0.25rem;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 0.75rem;
+  font-family: var(--font-primary, 'Roboto', sans-serif);
+  font-size: 0.9375rem;
+  color: var(--text-color, #333);
+  background-color: #fff;
+  border: 1px solid var(--border-color, #d1d5db);
+  border-radius: 4px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  resize: vertical;
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: var(--primary-color, #0056b3);
+  box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.15);
+}
+
+.textarea::placeholder {
+  color: var(--placeholder-color, #9ca3af);
+}
+
+.textarea.error {
+  border-color: var(--error-color, #d32f2f);
+}
+
+.textarea.error:focus {
+  box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.15);
+}
+
+.textarea.disabled {
+  background-color: var(--disabled-bg, #f3f4f6);
+  color: var(--disabled-text, #6b7280);
+  cursor: not-allowed;
+}
+
+.errorMessage {
+  font-size: 0.75rem;
+  color: var(--error-color, #d32f2f);
+  margin-top: 0.5rem;
+}
+
+.charCount {
+  font-size: 0.75rem;
+  color: var(--muted-color, #6b7280);
+  text-align: right;
+  margin-top: 0.25rem;
+}
+
+@media (max-width: 768px) {
+  .textarea {
+    font-size: 1rem;
+    padding: 0.625rem;
+  }
+}

@@ -1,0 +1,51 @@
+.aboutPage {
+  overflow-x: hidden;
+}
+
+.animatedSection {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Section specific background styling */
+.whoWeAreSection {
+  background-color: #fff;
+}
+
+.globalReachSection {
+  background-color: #f9f9f9;
+}
+
+.missionVisionSection {
+  background-color: #fff;
+  position: relative;
+}
+
+.missionVisionSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0) 100%);
+  z-index: 0;
+}
+
+.coreValuesSection {
+  background-color: #f5f8ff;
+}
+
+.leadershipSection {
+  background-color: #fff;
+}
+
+.partnershipSection {
+  background: linear-gradient(160deg, #f9f9f9 0%, #e6eeff 100%);
+}

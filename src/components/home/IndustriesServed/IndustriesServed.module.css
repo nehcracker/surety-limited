@@ -1,0 +1,153 @@
+.industriesSection {
+  padding: 4rem 0;
+  background-color: var(--light-bg);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.sectionHeader {
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.sectionTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+  font-family: var(--font-heading);
+}
+
+.iconWrapper {
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+
+.industriesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.sectionFooter {
+  text-align: center;
+}
+
+.customizationNote {
+  font-size: 1.125rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.industryLink {
+  display: inline-block;
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 1.125rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--primary-color);
+  border-radius: 4px;
+}
+
+.industryLink:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .industriesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .industriesSection {
+    padding: 3rem 0;
+  }
+  
+  .sectionTitle {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .industriesGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .customizationNote {
+    font-size: 1rem;
+  }
+  
+  .industryLink {
+    font-size: 1rem;
+  }
+}
+/* Add these styles to IndustriesServed.module.css */
+
+.industryCard {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.industryCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.cardImage {
+  height: 180px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.cardContent {
+  padding: 1.5rem;
+}
+
+.cardTitle {
+  font-size: 1.25rem;
+  text-align: left;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: var(--text-color);
+  font-family: var(--font-heading);
+}
+
+.cardDescription {
+  font-size: 0.95rem;
+  text-align: justify;
+  color: #666;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.cardLink {
+  display: flex;
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  text-align: left;
+}
+
+.cardLink:hover {
+  color: var(--secondary-color);
+  text-decoration: underline;
+}

@@ -1,0 +1,304 @@
+.footer {
+  background-color: #002b4e;
+  color: #ffffff;
+  width: 100%;
+}
+
+.footerMain {
+  padding: 4rem 0 2rem;
+}
+
+.footerContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.footerLogo {
+  flex: 1 1 100%;
+  max-width: 300px;
+}
+
+.footerLogo img {
+  height: 40px;
+  margin-bottom: 1rem;
+}
+
+.footerLogo p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #a6c1d9;
+}
+
+.footerNav {
+  flex: 1 1 60%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.footerColumn {
+  flex: 1;
+  min-width: 160px;
+}
+
+.footerColumn h4 {
+  color: #ffffff;
+  text-align: left;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+  position: relative;
+}
+
+.footerColumn h4::after {
+  content: '';
+  position: absolute;
+  bottom: -0.5rem;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background-color: #0089ff;
+}
+
+.footerColumn ul {
+  list-style: none;
+  text-align: left;
+  padding: 0;
+  margin: 0;
+}
+
+.footerColumn ul li {
+  margin-bottom: 0.7rem;
+}
+
+.footerColumn ul li a {
+  color: #a6c1d9;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.footerColumn ul li a:hover {
+  color: #ffffff;
+}
+
+.footerBottom {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footerBottomContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.copyright {
+  font-size: 0.8rem;
+  color: #a6c1d9;
+}
+
+.footerLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.footerLinks a {
+  color: #a6c1d9;
+  text-decoration: none;
+  font-size: 0.8rem;
+  transition: color 0.3s ease;
+}
+
+.footerLinks a:hover {
+  color: #ffffff;
+}
+
+.footerSocial {
+  display: flex;
+  gap: 1rem;
+}
+
+.footerSocial a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  transition: background-color 0.3s ease;
+}
+
+.footerSocial a:hover {
+  background-color: #0089ff;
+}
+
+/* Media Queries */
+@media (max-width: 992px) {
+  .footerContainer {
+    flex-direction: column;
+  }
+  
+  .footerLogo {
+    max-width: 100%;
+    margin-bottom: 2rem;
+  }
+  
+  .footerNav {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .footerMain {
+    padding: 3rem 0 1.5rem;
+  }
+  
+  .footerNav {
+    gap: 1rem;
+  }
+  
+  .footerColumn {
+    flex: 1 1 40%;
+    min-width: 140px;
+  }
+  
+  .footerBottomContainer {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .footerLinks {
+    justify-content: center;
+    margin: 1rem 0;
+  }
+  
+  .footerSocial {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .footerColumn {
+    flex: 1 1 100%;
+  }
+}
+/* Add these to Footer.module.css for the ContactStrip component */
+.contactStrip {
+  background-color: #004080;
+  padding: 1.5rem 0;
+}
+
+.contactStripContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.contactStripContent {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.contactStripHeading h3 {
+  font-size: 1.4rem;
+  margin: 0;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.contactStripInfo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #d9e6f2;
+  font-size: 0.9rem;
+}
+
+.contactItem i {
+  font-size: 1.2rem;
+  color: #0089ff;
+}
+
+.contactStripButtons {
+  display: flex;
+  gap: 1rem;
+}
+
+.contactBtn, .partnerBtn {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.contactBtn {
+  background-color: #0089ff;
+  color: #ffffff;
+  border: 2px solid #0089ff;
+}
+
+.partnerBtn {
+  background-color: transparent;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+}
+
+.contactBtn:hover {
+  background-color: #0077e6;
+  border-color: #0077e6;
+}
+
+.partnerBtn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 992px) {
+  .contactStripContent {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .contactStripInfo {
+    flex-direction: column;
+    gap: 0.8rem;
+    margin: 1rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .contactStripButtons {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .contactBtn, .partnerBtn {
+    text-align: center;
+  }
+}

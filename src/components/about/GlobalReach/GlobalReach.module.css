@@ -1,0 +1,316 @@
+.globalReachSection {
+  padding: 5rem 0;
+  background-color: #f9f9f9;
+  position: relative;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #002b5c;
+  margin-bottom: 3rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.globeIcon {
+  font-size: 3rem;
+  margin-right: 1rem;
+  animation: rotate 20s linear infinite;
+  display: inline-block;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.mapContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.worldMap {
+  position: relative;
+  height: 300px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.mapPlaceholder {
+  width: 100%;
+  height: 100%;
+  background-image: url('../../../assets/images/about/global-map.svg');
+  background-size: cover;
+  background-position: center;
+  background-color: #e6eeff;
+  transition: transform 0.5s ease;
+}
+
+.worldMap:hover .mapPlaceholder {
+  transform: scale(1.05);
+}
+
+.mapOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0,43,92,0.1) 0%, rgba(0,103,172,0.05) 100%);
+}
+
+.regionMarkers {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.regionMarker {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.regionMarker:hover {
+  transform: scale(1.5);
+  box-shadow: 0 0 0 4px rgba(255,255,255,0.5);
+}
+
+.markerPulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid;
+  transform: translate(-50%, -50%);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* Positioning for region markers - these would be adjusted based on the actual map */
+.africa {
+  top: 45%;
+  left: 50%;
+}
+
+.europe {
+  top: 30%;
+  left: 48%;
+}
+
+.middle-east {
+  top: 40%;
+  left: 60%;
+}
+
+.asia {
+  top: 35%;
+  left: 70%;
+}
+
+.regionInfo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.regionCard {
+  flex: 1;
+  min-width: 200px;
+  max-width: 250px;
+  background-color: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  border-top: 4px solid var(--region-color);
+  animation: slideIn 0.5s ease forwards;
+  animation-delay: var(--region-delay);
+  opacity: 0;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.regionCard:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.regionCard h3 {
+  font-size: 1.2rem;
+  color: var(--region-color);
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.regionCard h3::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background-color: var(--region-color);
+  transition: width 0.3s ease;
+}
+
+.regionCard:hover h3::after {
+  width: 60px;
+}
+
+.regionCountries {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+
+.regionCard.active .regionCountries {
+  max-height: 200px;
+}
+
+.regionCountries ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.regionCountries li {
+  padding: 4px 0;
+  font-size: 0.9rem;
+  color: #555;
+  position: relative;
+  padding-left: 15px;
+  animation: fadeIn 0.5s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.regionCountries li::before {
+  content: '•';
+  color: var(--region-color);
+  position: absolute;
+  left: 0;
+}
+
+.globalText {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+.complianceNote {
+  background-color: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+  transition: transform 0.3s ease;
+}
+
+.complianceNote:hover {
+  transform: translateY(-5px);
+}
+
+.noteIcon {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  background-color: rgba(0, 103, 172, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0067ac;
+}
+
+.complianceNote p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #444;
+}
+
+@media (min-width: 768px) {
+  .mapContainer {
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .worldMap {
+    flex: 1.5;
+    height: 300px;
+  }
+  
+  .regionInfo {
+    flex: 2;
+    flex-direction: row;
+  }
+}
+
+@media (max-width: 768px) {
+  .sectionTitle {
+    font-size: 2rem;
+  }
+  
+  .worldMap {
+    height: 250px;
+  }
+}
