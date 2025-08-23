@@ -1,171 +1,100 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import TeamMember from './TeamMember';
 import styles from './Leadership.module.css';
-import { motion } from 'framer-motion';
+
+// Sample team data - in a real application, you might import this from your data folder
+const teamMembers = [
+  {
+    id: 1,
+    name: "Jane Doe",
+    position: "Chief Executive Officer",
+    bio: "With over 20 years of experience in insurance and financial services, Jane leads our global operations with expertise and vision.",
+    image: "/assets/images/team/ceo.jpg"
+  },
+  {
+    id: 2,
+    name: "John Smith",
+    position: "Chief Financial Officer",
+    bio: "John brings 15 years of financial leadership experience across international markets, ensuring our fiscal stability and growth.",
+    image: "/assets/images/team/cfo.jpg"
+  },
+  {
+    id: 3,
+    name: "Michael Wong",
+    position: "Head of Underwriting",
+    bio: "Michael's deep knowledge of risk assessment and global insurance markets helps us deliver optimal solutions to our clients.",
+    image: "/assets/images/team/underwriting.jpg"
+  },
+  {
+    id: 4,
+    name: "Sarah Johnson",
+    position: "Director of Legal Compliance",
+    bio: "Sarah ensures all our operations meet the highest standards of regulatory compliance across all jurisdictions.",
+    image: "/assets/images/team/legal.jpg"
+  }
+];
 
 const Leadership = () => {
-  const [activeTab, setActiveTab] = useState('leadership');
-  
-  const teamMembers = [
-    {
-      id: 1,
-      name: 'Sarah Johnson',
-      title: 'Chief Executive Officer',
-      image: '/assets/images/team/sarah-johnson.jpg',
-      bio: 'With over 20 years in the insurance industry, Sarah has led Surety Limited through global expansion and technological transformation.',
-      expertise: ['Strategic Leadership', 'Global Markets', 'Regulatory Compliance'],
-      linkedin: 'https://linkedin.com/in/sarahjohnson'
-    },
-    {
-      id: 2,
-      name: 'Michael Chen',
-      title: 'Chief Operating Officer',
-      image: '/assets/images/team/michael-chen.jpg',
-      bio: 'Michael brings 15 years of operational excellence, having previously managed risk portfolios at leading financial institutions across Asia and Europe.',
-      expertise: ['Operational Efficiency', 'Risk Management', 'Process Optimization'],
-      linkedin: 'https://linkedin.com/in/michaelchen'
-    },
-    {
-      id: 3,
-      name: 'Elena Rodriguez',
-      title: 'Head of Underwriting',
-      image: '/assets/images/team/elena-rodriguez.jpg',
-      bio: 'Elena has underwritten bonds and insurance programs for major infrastructure projects across 3 continents, with special expertise in emerging markets.',
-      expertise: ['Complex Underwriting', 'Surety Bonds', 'Credit Analysis'],
-      linkedin: 'https://linkedin.com/in/elenarodriguez'
-    }
-  ];
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
 
-  const advisoryBoard = [
-    {
-      id: 5,
-      name: 'Dr. Amanda Liu',
-      title: 'Insurance Regulation Expert',
-      image: '/assets/images/team/amanda-liu.jpg',
-      bio: 'Former regulator and policy advisor specializing in international insurance frameworks and compliance standards.',
-      expertise: ['Regulatory Policy', 'Compliance', 'Risk Governance'],
-      linkedin: 'https://linkedin.com/in/amandaliu'
-    },
-    {
-      id: 6,
-      name: 'James Thornton',
-      title: 'Construction Industry Specialist',
-      image: '/assets/images/team/james-thornton.jpg',
-      bio: 'With 25+ years in global construction management, James provides insights on contractor risk needs and surety requirements.',
-      expertise: ['Construction Risk', 'Project Management', 'Contractor Requirements'],
-      linkedin: 'https://linkedin.com/in/jamesthornton'
-    }
-  ];
+  useEffect(() => {
+    // Create intersection observer to detect when section comes into view
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // Only set isVisible to true once when the element enters viewport
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          // Unobserve after triggering to prevent unnecessary callbacks
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1 } // Trigger when 10% of the element is visible
+    );
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { 
-      opacity: 1,
-      transition: { 
-        staggerChildren: 0.2
+    // Store the current ref value in a variable
+    const currentSection = sectionRef.current;
+
+    // Start observing the section element
+    if (currentSection) {
+      observer.observe(currentSection);
+    }
+
+    // Cleanup observer on component unmount
+    return () => {
+      if (currentSection) {
+        observer.unobserve(currentSection);
       }
-    }
-  };
+    };
+  }, []); // Empty dependency array ensures this only runs once on mount
 
   return (
-    <section className={styles.leadershipSection}>
+    <section className={styles.leadershipSection} ref={sectionRef}>
       <div className={styles.container}>
-        <div className={styles.sectionHeader}>
-          <motion.h2 
-            initial={{ y: 50, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.7 }}
-            viewport={{ once: true }}
-            className={styles.title}
-          >
-            Leadership & Team
-          </motion.h2>
-          
-          <motion.p 
-            initial={{ y: 30, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            viewport={{ once: true }}
-            className={styles.subtitle}
-          >
-            Our team is made up of seasoned underwriters, licensed brokers, compliance specialists, 
-            and claims professionals with decades of experience across insurance, finance, and law.
-          </motion.p>
+        <div className={`${styles.sectionHeader} ${isVisible ? styles.visible : ''}`}>
+          <h2>Leadership & Team</h2>
+          <p>Our team is made up of seasoned underwriters, licensed brokers, compliance specialists, 
+             and claims professionals with decades of experience across insurance, finance, and law.</p>
         </div>
-
-        <div className={styles.tabsContainer}>
-          <div className={styles.tabs}>
-            <button 
-              className={`${styles.tabButton} ${activeTab === 'leadership' ? styles.active : ''}`}
-              onClick={() => setActiveTab('leadership')}
-            >
-              Leadership Team
-            </button>
-            <button 
-              className={`${styles.tabButton} ${activeTab === 'advisory' ? styles.active : ''}`}
-              onClick={() => setActiveTab('advisory')}
-            >
-              Advisory Board
-            </button>
-          </div>
+        
+        <div className={styles.teamExperience}>
+          <p>Together, we've handled:</p>
+          <ul className={styles.experienceList}>
+            <li>Multi-million-dollar performance guarantees</li>
+            <li>High-risk, cross-border insurance programs</li>
+            <li>Customized risk solutions for projects in over 20 countries</li>
+          </ul>
         </div>
-
-        <motion.div 
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className={styles.teamGrid}
-        >
-          {activeTab === 'leadership' ? 
-            teamMembers.map(member => (
-              <TeamMember key={member.id} member={member} />
-            )) : 
-            advisoryBoard.map(member => (
-              <TeamMember key={member.id} member={member} />
-            ))
-          }
-        </motion.div>
-
-        <div className={styles.achievements}>
-          <motion.div 
-            initial={{ y: 30, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.7 }}
-            viewport={{ once: true }}
-            className={styles.achievementCard}
-          >
-            <h3>Multi-million-dollar performance guarantees</h3>
-            <div className={styles.achievementIcon}>
-              <i className="fas fa-chart-line"></i>
-            </div>
-          </motion.div>
-          
-          <motion.div 
-            initial={{ y: 30, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            viewport={{ once: true }}
-            className={styles.achievementCard}
-          >
-            <h3>High-risk, cross-border insurance programs</h3>
-            <div className={styles.achievementIcon}>
-              <i className="fas fa-globe"></i>
-            </div>
-          </motion.div>
-          
-          <motion.div 
-            initial={{ y: 30, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.7, delay: 0.4 }}
-            viewport={{ once: true }}
-            className={styles.achievementCard}
-          >
-            <h3>Customized risk solutions for projects in over 20 countries</h3>
-            <div className={styles.achievementIcon}>
-              <i className="fas fa-shield-alt"></i>
-            </div>
-          </motion.div>
+        
+        <div className={styles.teamGrid}>
+          {teamMembers.map((member, index) => (
+            <TeamMember 
+              key={member.id}
+              member={member}
+              delay={index * 0.2} // Staggered animation delay
+              isVisible={isVisible}
+            />
+          ))}
         </div>
       </div>
     </section>

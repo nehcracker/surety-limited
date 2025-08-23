@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import styles from './GlobalReach.module.css';
 
 const GlobalReach = () => {
   const [activeRegion, setActiveRegion] = useState(null);
   
-  const regions = [
+  // Memoize regions array to prevent recreation on every render
+  const regions = useMemo(() => [
     {
       id: 'africa',
       name: 'Africa',
@@ -29,61 +30,87 @@ const GlobalReach = () => {
       countries: ['Singapore', 'India', 'China', 'Japan', 'Malaysia'],
       color: '#4E7C35'
     }
-  ];
+  ], []);
 
-  const handleRegionClick = (regionId) => {
-    if (activeRegion === regionId) {
-      setActiveRegion(null);
-    } else {
-      setActiveRegion(regionId);
-    }
-  };
+  // Memoize the click handler to prevent recreation
+  const handleRegionClick = useCallback((regionId) => {
+    setActiveRegion(prevActive => prevActive === regionId ? null : regionId);
+  }, []);
+
+  // Memoize region index calculation to prevent repeated indexOf calls
+  const getRegionDelay = useCallback((region) => {
+    return regions.findIndex(r => r.id === region.id) * 0.1;
+  }, [regions]);
 
   return (
     <section className={styles.globalReachSection}>
       <div className={styles.container}>
         <h2 className={styles.sectionTitle}>
-          <span className={styles.globeIcon}>🌍</span> Our Global Reach
+          <span className={styles.globeIcon} role="img" aria-label="Globe">🌍</span> Our Global Reach
         </h2>
         
         <div className={styles.mapContainer}>
           <div className={styles.worldMap}>
             {/* This would ideally be replaced with an SVG world map with interactive regions */}
-            <div className={styles.mapPlaceholder}>
+            <div className={styles.mapPlaceholder} role="img" aria-label="World map showing our global presence">
               <div className={styles.mapOverlay}></div>
             </div>
             
             <div className={styles.regionMarkers}>
               {regions.map(region => (
-                <div 
+                <button 
                   key={region.id}
+                  type="button"
                   className={`${styles.regionMarker} ${styles[region.id]}`}
                   style={{ backgroundColor: region.color }}
                   onClick={() => handleRegionClick(region.id)}
+                  aria-label={`Select ${region.name} region`}
+                  aria-pressed={activeRegion === region.id}
                 >
-                  <span className={styles.markerPulse} style={{ borderColor: region.color }}></span>
-                </div>
+                  <span 
+                    className={styles.markerPulse} 
+                    style={{ borderColor: region.color }}
+                    aria-hidden="true"
+                  ></span>
+                </button>
               ))}
             </div>
           </div>
           
-          <div className={styles.regionInfo}>
+          <div className={styles.regionInfo} role="group" aria-label="Regional information">
             {regions.map(region => (
               <div 
                 key={region.id}
                 className={`${styles.regionCard} ${activeRegion === region.id ? styles.active : ''}`}
                 style={{ 
                   '--region-color': region.color,
-                  '--region-delay': `${regions.indexOf(region) * 0.1}s`
+                  '--region-delay': `${getRegionDelay(region)}s`
                 }}
                 onClick={() => handleRegionClick(region.id)}
+                role="button"
+                tabIndex={0}
+                aria-expanded={activeRegion === region.id}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    handleRegionClick(region.id);
+                  }
+                }}
               >
                 <h3>{region.name}</h3>
                 
-                <div className={styles.regionCountries}>
+                <div 
+                  className={styles.regionCountries}
+                  aria-hidden={activeRegion !== region.id}
+                >
                   <ul>
                     {region.countries.map((country, index) => (
-                      <li key={index} style={{ animationDelay: `${index * 0.1}s` }}>{country}</li>
+                      <li 
+                        key={`${region.id}-${country}`} 
+                        style={{ animationDelay: `${index * 0.1}s` }}
+                      >
+                        {country}
+                      </li>
                     ))}
                   </ul>
                 </div>
@@ -98,8 +125,20 @@ const GlobalReach = () => {
         </p>
         
         <div className={styles.complianceNote}>
-          <div className={styles.noteIcon}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <div className={styles.noteIcon} aria-hidden="true">
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              width="24" 
+              height="24" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              stroke="currentColor" 
+              strokeWidth="2" 
+              strokeLinecap="round" 
+              strokeLinejoin="round"
+              role="img"
+              aria-label="Compliance checkmark"
+            >
               <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
               <polyline points="22 4 12 14.01 9 11.01"></polyline>
             </svg>

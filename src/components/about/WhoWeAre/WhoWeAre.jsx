@@ -4,13 +4,37 @@ import styles from './WhoWeAre.module.css';
 const WhoWeAre = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   
+  // Handle image loading errors to prevent infinite loading
+  const handleImageError = (e) => {
+    console.warn('Image failed to load:', e.target.src);
+    e.target.style.display = 'none'; // Hide broken image
+    // Optionally set a fallback
+    // e.target.src = '/assets/images/fallback.jpg';
+  };
+
+  // Memoize the toggle function to prevent unnecessary re-renders
+  const toggleExpanded = () => {
+    setIsExpanded(prev => !prev);
+  };
+  
   return (
     <section className={styles.whoWeAreSection}>
       <div className={styles.container}>
         <div className={styles.titleWrapper}>
           <h2 className={styles.sectionTitle}>
             <span className={styles.iconWrapper}>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                width="24" 
+                height="24" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="2" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
                 <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
                 <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
               </svg>
@@ -43,29 +67,53 @@ const WhoWeAre = () => {
             </div>
             
             <button 
+              type="button"
               className={styles.expandButton} 
-              onClick={() => setIsExpanded(!isExpanded)}
+              onClick={toggleExpanded}
+              aria-expanded={isExpanded}
+              aria-controls="expandable-content"
             >
               {isExpanded ? 'Read Less' : 'Read More'}
-              <span className={`${styles.arrow} ${isExpanded ? styles.up : ''}`}></span>
+              <span 
+                className={`${styles.arrow} ${isExpanded ? styles.up : ''}`}
+                aria-hidden="true"
+              ></span>
             </button>
           </div>
           
           <div className={styles.imageWrapper}>
             <div className={styles.imageCard}>
-              <img src={require('../../../assets/images/about/trust.jpg')} alt="Trust" className={styles.image} />
+              <img 
+                src={require('../../../assets/images/about/trust.jpg')} 
+                alt="Trust - representing our commitment to reliability and integrity" 
+                className={styles.image}
+                onError={handleImageError}
+                loading="lazy"
+              />
               <div className={styles.cardOverlay}>
                 <span>Trust</span>
               </div>
             </div>
             <div className={styles.imageCard}>
-              <img src={require('../../../assets/images/about/speed.jpg')} alt="Speed" className={styles.image} />
+              <img 
+                src={require('../../../assets/images/about/speed.jpg')} 
+                alt="Speed - representing our efficient service delivery" 
+                className={styles.image}
+                onError={handleImageError}
+                loading="lazy"
+              />
               <div className={styles.cardOverlay}>
                 <span>Speed</span>
               </div>
             </div>
             <div className={styles.imageCard}>
-              <img src={require('../../../assets/images/about/precision.jpg')} alt="Precision" className={styles.image} />
+              <img 
+                src={require('../../../assets/images/about/precision.jpg')} 
+                alt="Precision - representing our attention to detail and accuracy" 
+                className={styles.image}
+                onError={handleImageError}
+                loading="lazy"
+              />
               <div className={styles.cardOverlay}>
                 <span>Precision</span>
               </div>

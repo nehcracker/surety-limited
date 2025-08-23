@@ -1,3 +1,4 @@
+// Fixed CoreValues.jsx - Remove problematic array operations
 import React, { useEffect, useRef } from 'react';
 import ValueCard from './ValueCard';
 import styles from './CoreValues.module.css';
@@ -5,7 +6,7 @@ import styles from './CoreValues.module.css';
 const CoreValues = () => {
   const sectionRef = useRef(null);
   
-  // Values data
+  // Values data - static to prevent re-renders
   const values = [
     {
       icon: 'shield-check',
@@ -29,8 +30,11 @@ const CoreValues = () => {
     }
   ];
 
-  // Animation on scroll
+  // Simplified intersection observer
   useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach(entry => {
@@ -42,17 +46,10 @@ const CoreValues = () => {
       { threshold: 0.1 }
     );
 
-    const section = sectionRef.current;
-    if (section) {
-      observer.observe(section);
-    }
+    observer.observe(section);
 
-    return () => {
-      if (section) {
-        observer.unobserve(section);
-      }
-    };
-  }, []);
+    return () => observer.disconnect();
+  }, []); // Empty dependency array
 
   return (
     <section className={styles.coreValues} ref={sectionRef}>
@@ -69,7 +66,7 @@ const CoreValues = () => {
         <div className={styles.valuesGrid}>
           {values.map((value, index) => (
             <ValueCard 
-              key={index}
+              key={value.title} // Use title as key instead of index
               icon={value.icon}
               title={value.title}
               description={value.description}
