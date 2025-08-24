@@ -1,0 +1,112 @@
+/* services/SuretyBonds/SuretyBonds.module.css */
+.suretySection {
+  padding: 60px 0;
+  background-color: #ffffff;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.sectionHeader {
+  margin-bottom: 40px;
+}
+
+.sectionTitle {
+  font-size: 2.2rem;
+  color: #102a43;
+  margin-bottom: 16px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  margin-right: 12px;
+}
+
+.sectionIntro {
+  font-size: 1.1rem;
+  color: #486581;
+  max-width: 800px;
+}
+
+.bondsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.bondCard {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.bondCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+}
+
+.bondTitle {
+  font-size: 1.3rem;
+  color: #102a43;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.bondDescription {
+  color: #486581;
+  line-height: 1.5;
+}
+
+.benefits {
+  margin-bottom: 40px;
+}
+
+.benefit {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.checkmark {
+  color: #38b2ac;
+  margin-right: 12px;
+  font-size: 1.2rem;
+}
+
+.ctaContainer {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.ctaButton {
+  display: inline-block;
+  background-color: #3182ce;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.ctaButton:hover {
+  background-color: #2b6cb0;
+}
+
+@media (max-width: 768px) {
+  .sectionTitle {
+    font-size: 1.8rem;
+  }
+  
+  .bondsGrid {
+    grid-template-columns: 1fr;
+  }
+}
