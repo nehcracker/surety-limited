@@ -2,35 +2,41 @@ import React, { useState, useRef, useEffect } from 'react';
 import TeamMember from './TeamMember';
 import styles from './Leadership.module.css';
 
+// Import team member images
+import ceo1Image from '../../../assets/images/team/ceo1.png';
+import ceoImage from '../../../assets/images/team/ceo.png';
+import legalImage from '../../../assets/images/team/legal.png';
+import houImage from '../../../assets/images/team/hou.png';
+
 // Sample team data - in a real application, you might import this from your data folder
 const teamMembers = [
   {
     id: 1,
-    name: "Jane Doe",
-    position: "Chief Executive Officer",
-    bio: "With over 20 years of experience in insurance and financial services, Jane leads our global operations with expertise and vision.",
-    image: "/assets/images/team/ceo.jpg"
+    name: "Peter Melly",
+    position: "Founder | Chief Executive Officer",
+    bio: "With over 20 years of experience in insurance and financial services, Melly leads our global operations with expertise and vision.",
+    image: ceo1Image
   },
   {
     id: 2,
-    name: "John Smith",
+    name: "Elizabeth W. Booth",
     position: "Chief Financial Officer",
-    bio: "John brings 15 years of financial leadership experience across international markets, ensuring our fiscal stability and growth.",
-    image: "/assets/images/team/cfo.jpg"
+    bio: "Elizabeth brings 15 years of financial leadership experience across international markets, ensuring our fiscal stability and growth.",
+    image: ceoImage // Placeholder or remove if not available
   },
   {
     id: 3,
-    name: "Michael Wong",
+    name: "Bridgette R. Kim",
     position: "Head of Underwriting",
-    bio: "Michael's deep knowledge of risk assessment and global insurance markets helps us deliver optimal solutions to our clients.",
-    image: "/assets/images/team/underwriting.jpg"
+    bio: "Bridgette's deep knowledge of risk assessment and global insurance markets helps us deliver optimal solutions to our clients.",
+    image: houImage // Placeholder or remove if not available
   },
   {
     id: 4,
-    name: "Sarah Johnson",
+    name: "Charles V. Boll",
     position: "Director of Legal Compliance",
-    bio: "Sarah ensures all our operations meet the highest standards of regulatory compliance across all jurisdictions.",
-    image: "/assets/images/team/legal.jpg"
+    bio: "Charles ensures all our operations meet the highest standards of regulatory compliance across all jurisdictions.",
+    image: legalImage
   }
 ];
 
