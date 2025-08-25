@@ -3,10 +3,10 @@ import TeamMember from './TeamMember';
 import styles from './Leadership.module.css';
 
 // Import team member images
-import ceo1Image from '../../../assets/images/team/ceo1.png';
+import ceo1Image from '../../../assets/images/team/hou.png';
 import ceoImage from '../../../assets/images/team/ceo.png';
 import legalImage from '../../../assets/images/team/legal.png';
-import houImage from '../../../assets/images/team/hou.png';
+import houImage from '../../../assets/images/team/ceo1.png';
 
 // Sample team data - in a real application, you might import this from your data folder
 const teamMembers = [
@@ -15,7 +15,7 @@ const teamMembers = [
     name: "Peter Melly",
     position: "Founder | Chief Executive Officer",
     bio: "With over 20 years of experience in insurance and financial services, Melly leads our global operations with expertise and vision.",
-    image: ceo1Image
+    image: legalImage
   },
   {
     id: 2,
@@ -29,14 +29,14 @@ const teamMembers = [
     name: "Bridgette R. Kim",
     position: "Head of Underwriting",
     bio: "Bridgette's deep knowledge of risk assessment and global insurance markets helps us deliver optimal solutions to our clients.",
-    image: houImage // Placeholder or remove if not available
+    image:  ceo1Image // Placeholder or remove if not available
   },
   {
     id: 4,
     name: "Charles V. Boll",
     position: "Director of Legal Compliance",
     bio: "Charles ensures all our operations meet the highest standards of regulatory compliance across all jurisdictions.",
-    image: legalImage
+    image: houImage
   }
 ];
 
