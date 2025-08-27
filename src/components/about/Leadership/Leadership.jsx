@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import TeamMember from './TeamMember';
+import { HashLink } from 'react-router-hash-link';
 import styles from './Leadership.module.css';
 
 // Import team member images
@@ -75,7 +76,11 @@ const Leadership = () => {
   }, []); // Empty dependency array ensures this only runs once on mount
 
   return (
-    <section className={styles.leadershipSection} ref={sectionRef}>
+    <>
+    <HashLink smooth to="/about#leadership" className={styles.leadershipLink}>
+        
+      </HashLink>
+    <section id="leadership" className={styles.leadershipSection} ref={sectionRef}>
       <div className={styles.container}>
         <div className={`${styles.sectionHeader} ${isVisible ? styles.visible : ''}`}>
           <h2>Leadership & Team</h2>
@@ -104,6 +109,7 @@ const Leadership = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 

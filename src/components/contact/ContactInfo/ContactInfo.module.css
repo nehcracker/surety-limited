@@ -1,0 +1,282 @@
+.contactInfo {
+  padding: 5rem 0;
+  background: #f8fafc;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.heading {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #1f2937;
+  margin-bottom: 1rem;
+}
+
+.subheading {
+  font-size: 1.2rem;
+  color: #6b7280;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.infoCard {
+  background: white;
+  border-radius: 1.5rem;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  border: 1px solid #e5e7eb;
+}
+
+.infoCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+}
+
+.cardTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e40af;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.infoItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.infoText {
+  color: #4b5563;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.contactItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.contactLabel {
+  font-weight: 600;
+  color: #374151;
+  font-size: 0.9rem;
+}
+
+.contactValue {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f3f4f6;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  color: #1e40af;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.contactValue:hover {
+  background: #e5e7eb;
+  border-color: #1e40af;
+  transform: translateX(4px);
+}
+
+.contactIcon {
+  font-size: 1.1rem;
+  opacity: 0.7;
+}
+
+.emergencyContact {
+  margin-bottom: 3rem;
+}
+
+.emergencyCard {
+  background: linear-gradient(135deg, #fee2e2, #fecaca);
+  border: 1px solid #fca5a5;
+  border-radius: 1.5rem;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.emergencyIcon {
+  font-size: 3rem;
+  flex-shrink: 0;
+}
+
+.emergencyContent {
+  flex: 1;
+}
+
+.emergencyTitle {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #991b1b;
+  margin-bottom: 0.5rem;
+}
+
+.emergencyText {
+  color: #7f1d1d;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.emergencyButton {
+  background: #dc2626;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.emergencyButton:hover {
+  background: #b91c1c;
+  transform: translateY(-2px);
+}
+
+.socialLinks {
+  text-align: center;
+}
+
+.socialTitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 1rem;
+}
+
+.socialIcons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background: white;
+  border: 2px solid #e5e7eb;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.socialLink:hover {
+  border-color: #1e40af;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(30, 64, 175, 0.2);
+}
+
+.socialIcon {
+  font-size: 1.5rem;
+}
+
+/* Tablet Styles */
+@media (min-width: 768px) {
+  .infoGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+  }
+
+  .heading {
+    font-size: 3rem;
+  }
+
+  .subheading {
+    font-size: 1.3rem;
+  }
+
+  .contactItem {
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .contactLabel {
+    min-width: 120px;
+    flex-shrink: 0;
+  }
+
+  .contactValue {
+    flex: 1;
+  }
+}
+
+/* Desktop Styles */
+@media (min-width: 1024px) {
+  .infoGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+  }
+
+  .container {
+    padding: 0 2rem;
+  }
+
+  .emergencyCard {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+}
+
+/* Large Desktop */
+@media (min-width: 1280px) {
+  .heading {
+    font-size: 3.5rem;
+  }
+}
+
+/* Small Mobile Adjustments */
+@media (max-width: 480px) {
+  .emergencyCard {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .emergencyIcon {
+    font-size: 2.5rem;
+  }
+
+  .heading {
+    font-size: 2rem;
+  }
+
+  .cardTitle {
+    font-size: 1.3rem;
+  }
+}
