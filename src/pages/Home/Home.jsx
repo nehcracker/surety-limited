@@ -1,17 +1,26 @@
-import React from 'react';
-import HeroSection from '../../components/home/HeroSection/HeroSection';
-import WhoWeAre from '../../components/home/WhoWeAre/WhoWeAre';
-import KeyOfferings from '../../components/home/KeyOfferings/KeyOfferings';
-import IndustriesServed from '../../components/home/IndustriesServed/IndustriesServed';
-import WhyChooseUs from '../../components/home/WhyChooseUs/WhyChooseUs';
-import TestimonialCarousel from '../../components/home/ClientTestimonials/TestimonialCarousel';
-import InsightsResources from '../../components/home/InsightsResources/InsightsResources';
-import RequestQuote from '../../components/home/RequestQuote/RequestQuote';
-import styles from './Home.module.css';
+import React from "react";
+import { Title, Meta, Link } from "react-head";
+import HeroSection from "../../components/home/HeroSection/HeroSection";
+import WhoWeAre from "../../components/home/WhoWeAre/WhoWeAre";
+import KeyOfferings from "../../components/home/KeyOfferings/KeyOfferings";
+import IndustriesServed from "../../components/home/IndustriesServed/IndustriesServed";
+import WhyChooseUs from "../../components/home/WhyChooseUs/WhyChooseUs";
+import TestimonialCarousel from "../../components/home/ClientTestimonials/TestimonialCarousel";
+import InsightsResources from "../../components/home/InsightsResources/InsightsResources";
+import RequestQuote from "../../components/home/RequestQuote/RequestQuote";
+import styles from "./Home.module.css";
 
 const Home = () => {
   return (
     <div className={styles.homePage}>
+      {/* SEO Meta Tags */}
+      <Title>Surety & Bonds | General Insurance Covers | Corporate Risk Solutions</Title>
+      <Meta name="description" content="Tailored surety and insurance products with unmatched global reach, best-in-class pricing, and full regulatory compliance.
+    " />
+      <Meta name="keywords" content="Surety bond, Political Risk Insurance, Cross-border Infrastructure Insurance, Trade Credit Insurance, Marine & Cargo Insurance, Financial Guarantees, Customs & Court Bonds, performance guarantee, Bank insurance, Advance Payments Guarantee, Bid bonds" />
+      <Link rel="canonical" href="https://www.suretylimited.com/" />
+
+      {/* Page Sections */}
       <HeroSection />
       <WhoWeAre />
       <KeyOfferings />
