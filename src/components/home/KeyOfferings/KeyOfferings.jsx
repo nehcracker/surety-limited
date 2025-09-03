@@ -21,7 +21,7 @@ const KeyOfferings = () => {
         "Customs & Court Bonds",
         "Financial Guarantees"
       ],
-      linkTo: "/services/surety-bonds"
+      linkTo: "/services/bonds"
     },
     {
       icon: insuranceIcon,
