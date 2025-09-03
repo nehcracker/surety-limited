@@ -6,6 +6,7 @@ import Home from './pages/Home/Home';
 import About from './pages/About/About';
 import Services from './pages/Services/Services';
 import Contact from './pages/Contact/Contact';
+import Bonds from './pages/Services/Bonds/Bonds';
 import Header from './components/common/Header/Header';
 import Footer from './components/common/Button/Footer/Footer'; // kept original import
 
@@ -23,6 +24,7 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/services" element={<Services />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/services/bonds" element={<Bonds />} />
             </Routes>
           </main>
           <Footer />
