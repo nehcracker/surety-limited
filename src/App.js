@@ -10,6 +10,7 @@ import Bonds from './pages/Services/Bonds/Bonds';
 import Header from './components/common/Header/Header';
 import Footer from './components/common/Button/Footer/Footer'; // kept original import
 import useScrollToTop from './hooks/useScrollToTop';
+import Insurance from './pages/Services/Insurance/GeneralInsurance/GeneralInsurance'; // fixed import path
 
 import './App.css';
 
@@ -27,6 +28,7 @@ function App() {
               <Route path="/services" element={<Services />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/services/bonds" element={<Bonds />} />
+              <Route path="/services/insurance" element={<Insurance />} />
             </Routes>
           </main>
           <Footer />

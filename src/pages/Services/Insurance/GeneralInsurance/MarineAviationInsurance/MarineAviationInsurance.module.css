@@ -1,0 +1,443 @@
+.section {
+  padding: 5rem 2rem;
+  background: linear-gradient(135deg, #0c4a6e 0%, #075985 50%, #0369a1 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(14, 165, 233, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 90% 80%, rgba(6, 182, 212, 0.15) 0%, transparent 50%),
+    linear-gradient(45deg, rgba(255, 255, 255, 0.03) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(255, 255, 255, 0.03) 25%, transparent 25%);
+  background-size: 60px 60px, 80px 80px, 40px 40px, 40px 40px;
+  animation: backgroundFloat 20s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes backgroundFloat {
+  0% { background-position: 0 0, 0 0, 0 0, 0 0; }
+  100% { background-position: 60px 60px, -80px 80px, 40px 40px, -40px -40px; }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+  color: white;
+}
+
+.title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.description {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.tabContainer {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.tab {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.tab::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.tab:hover::before {
+  left: 100%;
+}
+
+.tab:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.activeTab {
+  background: rgba(255, 255, 255, 0.9);
+  color: #0c4a6e;
+  border-color: rgba(255, 255, 255, 0.8);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.tabIcon {
+  font-size: 1.2rem;
+}
+
+.cardsWrapper {
+  margin: 4rem 0;
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 2rem;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transform: translateY(30px);
+  overflow: hidden;
+}
+
+.animated {
+  opacity: 1;
+  transform: translateY(0);
+  animation: cardSlideIn 0.6s ease-out forwards;
+}
+
+@keyframes cardSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  border-color: rgba(14, 165, 233, 0.3);
+}
+
+.card:hover .cardGlow {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.cardGlow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.1) 0%, transparent 70%);
+  opacity: 0;
+  transition: all 0.5s ease;
+  transform: scale(0.8);
+  pointer-events: none;
+}
+
+.cardHeader {
+  margin-bottom: 1.5rem;
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.cardIcon {
+  font-size: 2.5rem;
+  background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+  border-radius: 15px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+}
+
+.highlight {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+}
+
+.cardTitle {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #0c4a6e;
+  margin: 0;
+}
+
+.cardDescription {
+  color: #64748b;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.featuresContainer {
+  margin-bottom: 2rem;
+}
+
+.featuresTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #0c4a6e;
+  margin-bottom: 1rem;
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.75rem;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: rgba(14, 165, 233, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(14, 165, 233, 0.1);
+  transition: all 0.3s ease;
+}
+
+.feature:hover {
+  background: rgba(14, 165, 233, 0.1);
+  transform: translateX(5px);
+}
+
+.featureIcon {
+  color: #0ea5e9;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.featureText {
+  font-size: 0.9rem;
+  color: #475569;
+  font-weight: 500;
+}
+
+.cardFooter {
+  display: flex;
+  gap: 1rem;
+}
+
+.quoteBtn {
+  flex: 1;
+  background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+}
+
+.quoteBtn:hover {
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(14, 165, 233, 0.4);
+}
+
+.infoBtn {
+  flex: 1;
+  background: transparent;
+  color: #0ea5e9;
+  border: 2px solid #0ea5e9;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.infoBtn:hover {
+  background: #0ea5e9;
+  color: white;
+  transform: translateY(-2px);
+}
+
+.benefitsSection {
+  margin-top: 5rem;
+  text-align: center;
+}
+
+.benefitsTitle {
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 3rem;
+  background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.benefitsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.benefit {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.benefit::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.benefit:hover::before {
+  left: 100%;
+}
+
+.benefit:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.benefitIcon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+}
+
+.benefitTitle {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.benefitText {
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.5;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.2rem;
+  }
+  
+  .tabContainer {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .tab {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+  }
+  
+  .cardsGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .card {
+    padding: 1.5rem;
+  }
+  
+  .cardFooter {
+    flex-direction: column;
+  }
+  
+  .featuresGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .benefitsGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .benefit {
+    padding: 1.5rem;
+  }
+}

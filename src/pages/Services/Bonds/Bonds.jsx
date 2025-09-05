@@ -4,6 +4,9 @@ import styles from './Bonds.module.css';
 import PerformanceBond from './sections/PerformanceBond/PerformanceBond';
 import BidBond from './sections/BidBond/BidBond';
 import AdvancePaymentBond from './sections/AdvancePaymentBond/AdvancePaymentBond';
+import CustomsBond from './sections/CustomsBond/CustomsBond';
+import CourtBond from './sections/CourtBond/CourtBond';
+import FinancialGuarantee from './sections/FinancialGuarantee/FinancialGuarantee';
 
 
 const Bonds = () => {
@@ -47,16 +50,14 @@ const Bonds = () => {
         </div>
       </section>
 
-      
+      {/* Bond Sections */}
       <PerformanceBond />
-      
       <BidBond />
       <AdvancePaymentBond />
-      {/* Bond Sections 
       <CustomsBond />
       <CourtBond />
       <FinancialGuarantee />
-      */}
+      
 
       {/* Closing Statement Section */}
       <section className={styles.closingSection}>
