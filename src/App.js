@@ -9,6 +9,7 @@ import Contact from './pages/Contact/Contact';
 import Bonds from './pages/Services/Bonds/Bonds';
 import Header from './components/common/Header/Header';
 import Footer from './components/common/Button/Footer/Footer'; // kept original import
+import useScrollToTop from './hooks/useScrollToTop';
 
 import './App.css';
 
@@ -17,6 +18,7 @@ function App() {
     <HeadProvider>
       <Router>
         <div className="App">
+          <ScrollToTopController />
           <Header />
           <main>
             <Routes>
@@ -33,5 +35,11 @@ function App() {
     </HeadProvider>
   );
 }
+
+// Component to handle scroll behavior
+const ScrollToTopController = () => {
+  useScrollToTop();
+  return null;
+};
 
 export default App;
