@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import ContactStrip from './ContactStrip';
 import styles from './Footer.module.css';
+import logo from '../../../../assets/images/logo/Surety-logo.png';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -13,7 +14,7 @@ const Footer = () => {
       <div className={styles.footerMain}>
         <div className={styles.footerContainer}>
           <div className={styles.footerLogo}>
-            <img src="/assets/images/logo/logo.svg" alt="Surety Limited" />
+            <img src={logo} alt="Surety Limited" />
             <p>Your trusted partner in global bonds & insurance brokerage solutions.</p>
           </div>
           
@@ -32,7 +33,7 @@ const Footer = () => {
             <div className={styles.footerColumn}>
               <h4>Services</h4>
               <ul>
-                <li><Link to="/services#surety-bonds">Surety & Bonds</Link></li>
+                <li><Link to="/services/bonds">Surety & Bonds</Link></li>
                 <li><Link to="/services#general-insurance">General Insurance</Link></li>
                 <li><Link to="/services#corporate-risk">Corporate Risk Solutions</Link></li>
                 <li><Link to="/services#global-programs">Global Programs</Link></li>

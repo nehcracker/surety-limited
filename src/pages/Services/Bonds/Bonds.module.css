@@ -234,6 +234,7 @@
   .heroTitle {
     font-size: 4rem;
     text-align: left;
+    align-items: center;
   }
   .heroSubtitle {
     font-size: 2rem;
@@ -252,6 +253,11 @@
     font-size: 1.25rem;
     max-width: 48rem;
     text-align: justify;
+    justify-content: left;
+    display: flex;
+    flex-wrap: wrap;
+
+
   }
   .closingSection {
     padding: 5rem 0;

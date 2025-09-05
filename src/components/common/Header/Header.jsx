@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Navigation from './Navigation';
 import styles from './Header.module.css';
+import logo from '../../../assets/images/logo/Surety-logo.png';
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -14,7 +15,7 @@ const Header = () => {
       <div className={styles.container}>
         <div className={styles.logoContainer}>
           <a href="/" className={styles.logo}>
-            Surety Limited
+            <img src={logo} alt="Surety Limited" />
           </a>
         </div>
         

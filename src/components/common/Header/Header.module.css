@@ -28,6 +28,13 @@
   font-weight: 700;
   color: #0056b3;
   text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 40px;
+  width: auto;
 }
 
 .mobileMenuButton {
