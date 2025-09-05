@@ -33,7 +33,7 @@ const KeyOfferings = () => {
         "Travel & Aviation Insurance",
         "Cyber Risk Insurance"
       ],
-      linkTo: "/services/general-insurance"
+      linkTo: "/services/insurance"
     },
     {
       icon: riskIcon,
