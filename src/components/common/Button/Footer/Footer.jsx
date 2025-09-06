@@ -37,7 +37,7 @@ const Footer = () => {
                 <li><Link to="/services/insurance">General Insurance</Link></li>
                 <li><Link to="/services#corporate-risk">Corporate Risk Solutions</Link></li>
                 <li><Link to="/services#global-programs">Global Programs</Link></li>
-                <li><Link to="/quote">Get a Quote</Link></li>
+                <li><Link to="/quote-request">Get a Quote</Link></li>
               </ul>
             </div>
             

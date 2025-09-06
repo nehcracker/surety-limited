@@ -24,7 +24,7 @@ const Navigation = ({ isOpen, toggleMenu }) => {
           <a href="/contact" className={styles.navLink}>Contact</a>
         </li>
         <li className={styles.navItem}>
-          <a href="/quote" className={`${styles.navLink} ${styles.quoteButton}`}>Get a Quote</a>
+          <a href="/quote-request" className={`${styles.navLink} ${styles.quoteButton}`}>Get a Quote</a>
         </li>
       </ul>
       

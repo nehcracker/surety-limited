@@ -15,8 +15,11 @@ const Home = () => {
     <div className={styles.homePage}>
       {/* SEO Meta Tags */}
       <Title>Surety & Bonds | General Insurance Covers | Corporate Risk Solutions</Title>
-      <Meta name="description" content="Tailored surety and insurance products with unmatched global reach, best-in-class pricing, and full regulatory compliance.
-    " />
+      <Meta
+        key="description"
+        name="description"
+        content="Tailored surety and insurance products with unmatched global reach, best-in-class pricing, and full regulatory compliance."
+      />
       <Meta name="keywords" content="Surety bond, Political Risk Insurance, Cross-border Infrastructure Insurance, Trade Credit Insurance, Marine & Cargo Insurance, Financial Guarantees, Customs & Court Bonds, performance guarantee, Bank insurance, Advance Payments Guarantee, Bid bonds" />
       <Link rel="canonical" href="https://www.suretylimited.com/" />
 
