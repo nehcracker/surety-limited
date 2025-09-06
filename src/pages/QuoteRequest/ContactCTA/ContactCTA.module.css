@@ -1,0 +1,641 @@
+.contactCTA {
+  position: relative;
+  padding: 6rem 0 4rem 0;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%);
+  overflow: hidden;
+}
+
+.container {
+  position: relative;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+  z-index: 10;
+}
+
+.content {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.content.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: #6b7280;
+  line-height: 1.6;
+  max-width: 48rem;
+  margin: 0 auto;
+  animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+/* Contact Grid */
+.contactGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.contactCard {
+  position: relative;
+  background: white;
+  border-radius: 1.5rem;
+  padding: 2rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  overflow: hidden;
+  border: 2px solid transparent;
+  animation: fadeInUp 0.8s ease-out both;
+}
+
+.contactCard:hover,
+.cardHovered {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+}
+
+/* Color Variants */
+.blueCard:hover,
+.blueCard.cardHovered {
+  border-color: rgba(59, 130, 246, 0.3);
+  box-shadow: 0 20px 25px -5px rgba(59, 130, 246, 0.25);
+}
+
+.greenCard:hover,
+.greenCard.cardHovered {
+  border-color: rgba(16, 185, 129, 0.3);
+  box-shadow: 0 20px 25px -5px rgba(16, 185, 129, 0.25);
+}
+
+.purpleCard:hover,
+.purpleCard.cardHovered {
+  border-color: rgba(139, 92, 246, 0.3);
+  box-shadow: 0 20px 25px -5px rgba(139, 92, 246, 0.25);
+}
+
+.cardContent {
+  position: relative;
+  z-index: 10;
+}
+
+/* Icon Wrapper */
+.iconWrapper {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.blueIcon {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(99, 102, 241, 0.1));
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.greenIcon {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(5, 150, 105, 0.1));
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.purpleIcon {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(124, 58, 237, 0.1));
+  border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+.contactCard:hover .iconWrapper {
+  transform: scale(1.1);
+}
+
+.contactIcon {
+  width: 2rem;
+  height: 2rem;
+  transition: color 0.3s ease;
+}
+
+.blueIcon .contactIcon {
+  color: #3b82f6;
+}
+
+.greenIcon .contactIcon {
+  color: #10b981;
+}
+
+.purpleIcon .contactIcon {
+  color: #8b5cf6;
+}
+
+/* Contact Info */
+.contactInfo {
+  margin-bottom: 1.5rem;
+}
+
+.contactTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+}
+
+.contactValue {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+.contactDescription {
+  font-size: 0.875rem;
+  color: #6b7280;
+  line-height: 1.4;
+}
+
+/* Contact Button */
+.contactButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: transparent;
+  width: 100%;
+  justify-content: center;
+}
+
+.blueButton {
+  color: #3b82f6;
+  border-color: #3b82f6;
+}
+
+.blueButton:hover {
+  background: #3b82f6;
+  color: white;
+}
+
+.greenButton {
+  color: #10b981;
+  border-color: #10b981;
+}
+
+.greenButton:hover {
+  background: #10b981;
+  color: white;
+}
+
+.purpleButton {
+  color: #8b5cf6;
+  border-color: #8b5cf6;
+}
+
+.purpleButton:hover {
+  background: #8b5cf6;
+  color: white;
+}
+
+.buttonIcon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Hover Effect */
+.hoverEffect {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.02), rgba(99, 102, 241, 0.02));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 1.5rem;
+}
+
+.contactCard:hover .hoverEffect {
+  opacity: 1;
+}
+
+/* Office Section */
+.officeSection {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 4rem;
+  animation: fadeInUp 0.8s ease-out 0.8s both;
+}
+
+.officeCard {
+  background: linear-gradient(135deg, #1e40af, #1e3a8a);
+  color: white;
+  padding: 2.5rem;
+  border-radius: 1.5rem;
+  text-align: center;
+  max-width: 32rem;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.officeCard::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  border-radius: 1.5rem;
+}
+
+.officeTitle {
+  position: relative;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.officeInfo {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.officeItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-align: left;
+}
+
+.officeIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #bfdbfe;
+  flex-shrink: 0;
+}
+
+.officeLabel {
+  font-size: 0.875rem;
+  opacity: 0.8;
+  margin-bottom: 0.25rem;
+}
+
+.officeValue {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* Bottom CTA */
+.bottomCTA {
+  text-align: center;
+  margin-bottom: 3rem;
+  animation: fadeInUp 0.8s ease-out 1s both;
+}
+
+.ctaContent {
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+.ctaTitle {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.ctaDescription {
+  font-size: 1.125rem;
+  color: #6b7280;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+.ctaButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.primaryButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #3b82f6, #6366f1);
+  color: white;
+  border: none;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.primaryButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.4);
+}
+
+.secondaryButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background: transparent;
+  color: #374151;
+  border: 2px solid #d1d5db;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.secondaryButton:hover {
+  background: #374151;
+  color: white;
+  border-color: #374151;
+  transform: translateY(-2px);
+}
+
+.buttonArrow {
+  width: 1.125rem;
+  height: 1.125rem;
+  transition: transform 0.3s ease;
+}
+
+.primaryButton:hover .buttonArrow,
+.secondaryButton:hover .buttonArrow {
+  transform: translateX(0.25rem);
+}
+
+/* Trust Badges */
+.trustBadges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  animation: fadeInUp 0.8s ease-out 1.2s both;
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 2rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.1);
+  border-color: #3b82f6;
+}
+
+.badgeIcon {
+  font-size: 1.125rem;
+}
+
+/* Background Decorations */
+.backgroundDecorations {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.decoration1 {
+  position: absolute;
+  top: 10%;
+  left: -5%;
+  width: 10rem;
+  height: 10rem;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(99, 102, 241, 0.1));
+  border-radius: 50%;
+  filter: blur(30px);
+  animation: float 6s ease-in-out infinite;
+}
+
+.decoration2 {
+  position: absolute;
+  top: 50%;
+  right: -5%;
+  width: 14rem;
+  height: 14rem;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(5, 150, 105, 0.1));
+  border-radius: 50%;
+  filter: blur(40px);
+  animation: float 6s ease-in-out infinite 2s;
+}
+
+.decoration3 {
+  position: absolute;
+  bottom: 20%;
+  left: 20%;
+  width: 8rem;
+  height: 8rem;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(124, 58, 237, 0.1));
+  border-radius: 50%;
+  filter: blur(25px);
+  animation: float 6s ease-in-out infinite 4s;
+}
+
+/* Responsive Design */
+@media (min-width: 640px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+  
+  .title {
+    font-size: 3rem;
+  }
+  
+  .subtitle {
+    font-size: 1.375rem;
+  }
+  
+  .officeInfo {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .officeItem {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+}
+
+@media (min-width: 768px) {
+  .contactGrid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 2rem;
+  }
+  
+  .contactGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .contactCTA {
+    padding: 4rem 0 3rem 0;
+  }
+  
+  .title {
+    font-size: 2rem;
+  }
+  
+  .subtitle {
+    font-size: 1.125rem;
+  }
+  
+  .contactGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .officeCard {
+    padding: 2rem;
+  }
+  
+  .ctaButtons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .primaryButton,
+  .secondaryButton {
+    width: 100%;
+    max-width: 280px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contactCTA {
+    padding: 3rem 0 2rem 0;
+  }
+  
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .title {
+    font-size: 1.75rem;
+    line-height: 1.3;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+  }
+  
+  .header {
+    margin-bottom: 3rem;
+  }
+  
+  .contactGrid {
+    margin-bottom: 3rem;
+  }
+  
+  .contactCard {
+    padding: 1.5rem;
+  }
+  
+  .contactTitle {
+    font-size: 1.125rem;
+  }
+  
+  .contactValue {
+    font-size: 1rem;
+  }
+  
+  .officeCard {
+    padding: 1.5rem;
+  }
+  
+  .officeTitle {
+    font-size: 1.25rem;
+  }
+  
+  .ctaTitle {
+    font-size: 1.5rem;
+  }
+  
+  .ctaDescription {
+    font-size: 1rem;
+  }
+  
+  .trustBadges {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .badge {
+    width: 100%;
+    max-width: 250px;
+    justify-content: center;
+  }
+  
+  .decoration1,
+  .decoration2,
+  .decoration3 {
+    display: none;
+  }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(3deg);
+  }
+}

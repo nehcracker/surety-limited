@@ -11,7 +11,7 @@ import Header from './components/common/Header/Header';
 import Footer from './components/common/Button/Footer/Footer'; // kept original import
 import useScrollToTop from './hooks/useScrollToTop';
 import Insurance from './pages/Services/Insurance/GeneralInsurance/GeneralInsurance'; // fixed import path
-
+import QuoteRequest from './pages/QuoteRequest/QuoteRequest';
 import './App.css';
 
 function App() {
@@ -29,6 +29,7 @@ function App() {
               <Route path="/contact" element={<Contact />} />
               <Route path="/services/bonds" element={<Bonds />} />
               <Route path="/services/insurance" element={<Insurance />} />
+              <Route path="/quote-request" element={<QuoteRequest />} />
             </Routes>
           </main>
           <Footer />

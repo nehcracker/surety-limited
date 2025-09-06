@@ -1,0 +1,357 @@
+.intro {
+  position: relative;
+  padding: 4rem 0 6rem 0;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  overflow: hidden;
+}
+
+.container {
+  position: relative;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.content {
+  text-align: center;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.content.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.textContent {
+  margin-bottom: 4rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.description {
+  font-size: 1.25rem;
+  color: #6b7280;
+  line-height: 1.7;
+  max-width: 56rem;
+  margin: 0 auto;
+  animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+.brandName {
+  color: #3b82f6;
+  font-weight: 600;
+  position: relative;
+}
+
+.brandName::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(135deg, #3b82f6, #6366f1);
+  border-radius: 1px;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.statCard {
+  position: relative;
+  background: white;
+  padding: 2rem 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: 1px solid #f1f5f9;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.statCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(135deg, #3b82f6, #6366f1);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.statCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.statCard:hover::before {
+  transform: scaleX(1);
+}
+
+.statCard1 {
+  animation: fadeInUp 0.8s ease-out 0.6s both;
+}
+
+.statCard2 {
+  animation: fadeInUp 0.8s ease-out 0.8s both;
+}
+
+.statCard3 {
+  animation: fadeInUp 0.8s ease-out 1s both;
+}
+
+.statIcon {
+  width: 3rem;
+  height: 3rem;
+  background: linear-gradient(135deg, #3b82f6, #6366f1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem auto;
+  transition: transform 0.3s ease;
+}
+
+.statCard:hover .statIcon {
+  transform: scale(1.1);
+}
+
+.icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: white;
+}
+
+.statContent {
+  text-align: center;
+}
+
+.statNumber {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+}
+
+.statLabel {
+  font-size: 0.875rem;
+  color: #6b7280;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.trustSection {
+  animation: fadeInUp 0.8s ease-out 1.2s both;
+}
+
+.trustBadges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.trustBadge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #f0f7ff, #e0f2fe);
+  border: 1px solid #e0f2fe;
+  border-radius: 2rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #1e40af;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.trustBadge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px -5px rgba(59, 130, 246, 0.2);
+  background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+}
+
+.trustIcon {
+  font-size: 1.125rem;
+}
+
+.backgroundDecoration {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.decorativeShape1 {
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  width: 8rem;
+  height: 8rem;
+  background: linear-gradient(135deg, #3b82f6, #6366f1);
+  border-radius: 50%;
+  opacity: 0.1;
+  filter: blur(20px);
+  animation: float 6s ease-in-out infinite;
+}
+
+.decorativeShape2 {
+  position: absolute;
+  bottom: 20%;
+  left: 15%;
+  width: 6rem;
+  height: 6rem;
+  background: linear-gradient(135deg, #06b6d4, #0891b2);
+  border-radius: 50%;
+  opacity: 0.1;
+  filter: blur(15px);
+  animation: float 6s ease-in-out infinite 2s;
+}
+
+/* Responsive Design */
+@media (min-width: 640px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+  
+  .title {
+    font-size: 3rem;
+  }
+  
+  .description {
+    font-size: 1.375rem;
+  }
+  
+  .statsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 2rem;
+  }
+  
+  .title {
+    font-size: 3.5rem;
+  }
+  
+  .intro {
+    padding: 6rem 0 8rem 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .intro {
+    padding: 3rem 0 4rem 0;
+  }
+  
+  .title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .description {
+    font-size: 1.125rem;
+  }
+  
+  .statsGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+  
+  .statCard {
+    padding: 1.5rem 1rem;
+  }
+  
+  .trustBadges {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .trustBadge {
+    width: 100%;
+    max-width: 200px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .intro {
+    padding: 2rem 0 3rem 0;
+  }
+  
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .title {
+    font-size: 1.75rem;
+    line-height: 1.3;
+  }
+  
+  .description {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  
+  .textContent {
+    margin-bottom: 3rem;
+  }
+  
+  .statCard {
+    padding: 1.25rem 0.75rem;
+  }
+  
+  .statNumber {
+    font-size: 1.5rem;
+  }
+  
+  .decorativeShape1,
+  .decorativeShape2 {
+    display: none;
+  }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+}
