@@ -244,6 +244,9 @@
   list-style: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  text-align: right;
 }
 
 .serviceItem {
@@ -257,6 +260,12 @@
   border-radius: 12px;
   position: relative;
   border-left: 4px solid transparent;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.serviceItem:hover {
+  background: rgba(255, 255, 255, 0.9);
+  transform: translateX(2px);
 }
 
 .serviceCard:nth-child(1) .serviceItem {
@@ -300,6 +309,39 @@
 }
 
 .serviceCard:nth-child(4) .checkIcon {
+  color: #96CEB4;
+}
+
+/* ===== SERVICE LINK STYLES ===== */
+.serviceLink {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  transition: color 0.2s ease, transform 0.2s ease;
+  border-radius: 8px;
+  padding: 2px 4px;
+  margin: -2px -4px;
+  flex: 1;
+}
+
+.serviceLink:hover {
+  transform: translateX(4px);
+}
+
+.serviceCard:nth-child(1) .serviceLink:hover {
+  color: #FF6B6B;
+}
+
+.serviceCard:nth-child(2) .serviceLink:hover {
+  color: #4ECDC4;
+}
+
+.serviceCard:nth-child(3) .serviceLink:hover {
+  color: #45B7D1;
+}
+
+.serviceCard:nth-child(4) .serviceLink:hover {
   color: #96CEB4;
 }
 
@@ -570,7 +612,9 @@
   .serviceCard:hover,
   .learnMoreLink:hover,
   .exploreButton:hover,
-  .iconContainer:hover {
+  .iconContainer:hover,
+  .serviceItem:hover,
+  .serviceLink:hover {
     transform: none !important;
   }
 }
@@ -590,6 +634,10 @@
   }
   
   .serviceText {
+    color: #000000;
+  }
+  
+  .serviceLink {
     color: #000000;
   }
 }
@@ -613,6 +661,10 @@
   .learnMoreLink,
   .exploreButton {
     background: #cccccc !important;
+    color: #000000 !important;
+  }
+  
+  .serviceLink {
     color: #000000 !important;
   }
 }

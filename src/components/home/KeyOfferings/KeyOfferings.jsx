@@ -15,11 +15,11 @@ const KeyOfferings = () => {
       icon: bondsIcon,
       title: "Surety & Bonds",
       services: [
-        "Performance Bonds",
-        "Bid Bonds",
-        "Advance Payment Guarantees",
-        "Customs & Court Bonds",
-        "Financial Guarantees"
+        { name: "Performance Bonds", slug: "performance-bonds" },
+        { name: "Bid Bonds", slug: "bid-bonds" },
+        { name: "Advance Payment Guarantees", slug: "advance-payment-guarantees" },
+        { name: "Customs & Court Bonds", slug: "customs-court-bonds" },
+        { name: "Financial Guarantees", slug: "financial-guarantees" }
       ],
       linkTo: "/services/bonds"
     },
@@ -27,11 +27,11 @@ const KeyOfferings = () => {
       icon: insuranceIcon,
       title: "General Insurance Covers",
       services: [
-        "Motor Insurance (Private & Commercial)",
-        "Marine & Cargo Insurance",
-        "Property & Fire Insurance",
-        "Travel & Aviation Insurance",
-        "Cyber Risk Insurance"
+        { name: "Motor Insurance (Private & Commercial)", slug: "motor-insurance" },
+        { name: "Marine & Cargo Insurance", slug: "marine-cargo-insurance" },
+        { name: "Property & Fire Insurance", slug: "property-fire-insurance" },
+        { name: "Travel & Aviation Insurance", slug: "travel-aviation-insurance" },
+        { name: "Cyber Risk Insurance", slug: "cyber-risk-insurance" }
       ],
       linkTo: "/services/insurance"
     },
@@ -39,10 +39,10 @@ const KeyOfferings = () => {
       icon: riskIcon,
       title: "Corporate Risk Solutions",
       services: [
-        "Directors & Officers (D&O) Liability",
-        "Business Interruption Cover",
-        "Trade Credit Insurance",
-        "Employee Group Benefits"
+        { name: "Directors & Officers (D&O) Liability", slug: "directors-officers-liability" },
+        { name: "Business Interruption Cover", slug: "business-interruption-cover" },
+        { name: "Trade Credit Insurance", slug: "trade-credit-insurance" },
+        { name: "Employee Group Benefits", slug: "employee-group-benefits" }
       ],
       linkTo: "/services/corporate-risk"
     },
@@ -50,10 +50,10 @@ const KeyOfferings = () => {
       icon: globalIcon,
       title: "Specialized Global Covers",
       services: [
-        "Political Risk Insurance",
-        "Reinsurance Placement",
-        "Multinational Program Structuring",
-        "Cross-border Infrastructure Insurance"
+        { name: "Political Risk Insurance", slug: "political-risk-insurance" },
+        { name: "Reinsurance Placement", slug: "reinsurance-placement" },
+        { name: "Multinational Program Structuring", slug: "multinational-program-structuring" },
+        { name: "Cross-border Infrastructure Insurance", slug: "cross-border-infrastructure-insurance" }
       ],
       linkTo: "/services/global-programs"
     }

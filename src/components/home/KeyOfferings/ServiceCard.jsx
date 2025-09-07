@@ -17,7 +17,12 @@ const ServiceCard = ({ icon, title, services, linkTo }) => {
           {services.map((service, index) => (
             <li key={index} className={styles.serviceItem}>
               <span className={styles.checkIcon}>✓</span>
-              <span className={styles.serviceText}>{service}</span>
+              <Link 
+                to={`${linkTo}/${service.slug}`} 
+                className={styles.serviceLink}
+              >
+                <span className={styles.serviceText}>{service.name}</span>
+              </Link>
             </li>
           ))}
         </ul>
