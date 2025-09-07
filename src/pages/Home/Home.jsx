@@ -23,6 +23,30 @@ const Home = () => {
       <Meta name="keywords" content="Surety bond, Political Risk Insurance, Cross-border Infrastructure Insurance, Trade Credit Insurance, Marine & Cargo Insurance, Financial Guarantees, Customs & Court Bonds, performance guarantee, Bank insurance, Advance Payments Guarantee, Bid bonds" />
       <Link rel="canonical" href="https://www.suretylimited.com/" />
 
+      {/* Schema.org Structured Data */}
+      <script type="application/ld+json">
+        {`
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "Surety Limited",
+          "url": "https://www.suretylimited.com",
+          "logo": "https://www.suretylimited.com/assets/images/logo/Surety-logo.png",
+          "description": "Tailored surety and insurance products with unmatched global reach, best-in-class pricing, and full regulatory compliance.",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "Customer Service",
+            "areaServed": "Worldwide"
+          },
+          "sameAs": [
+            "https://linkedin.com/company/surety-limited",
+            "https://twitter.com/suretylimited",
+            "https://facebook.com/suretylimited"
+          ]
+        }
+        `}
+      </script>
+
       {/* Page Sections */}
       <HeroSection />
       <WhoWeAre />

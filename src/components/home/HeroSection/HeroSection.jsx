@@ -1,7 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './HeroSection.module.css';
 
 const HeroSection = () => {
+  const navigate = useNavigate();
+
   return (
     <section className={styles.heroSection}>
       <div className={styles.heroContent}>
@@ -13,7 +16,12 @@ const HeroSection = () => {
           best-in-class pricing, and full regulatory compliance.
         </p>
         <div className={styles.ctaContainer}>
-          <button className={styles.primaryButton}>Get a Free Quote</button>
+          <button
+            className={styles.primaryButton}
+            onClick={() => navigate('/quote-request')}
+          >
+            Get a Free Quote
+          </button>
           <button className={styles.secondaryButton}>Talk to an Expert</button>
         </div>
       </div>

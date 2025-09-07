@@ -28,12 +28,28 @@
   max-width: 800px;
 }
 
+@keyframes slideUpLeft {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) translateX(40px);
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(-5px) translateX(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) translateX(0);
+  }
+}
+
 .headline {
   font-size: 3rem;
   text-align: justify;
   font-weight: 700;
   margin-bottom: 1.5rem;
   line-height: 1.2;
+  animation: slideUpLeft 1s cubic-bezier(0.77, 0, 0.175, 1) 0.1s both;
 }
 
 .subheadline {
@@ -43,11 +59,14 @@
   margin-bottom: 2rem;
   line-height: 1.6;
   opacity: 0.9;
+  animation: slideUpLeft 1.2s cubic-bezier(0.77, 0, 0.175, 1) 0.3s both;
 }
 
 .ctaContainer {
   display: flex;
   gap: 1rem;
+  /* Animate container for staggered effect */
+  animation: slideUpLeft 1.6s cubic-bezier(0.77, 0, 0.175, 1) 0.5s both;
 }
 
 .primaryButton, .secondaryButton {
@@ -58,17 +77,23 @@
   cursor: pointer;
   transition: all 0.3s ease;
   border: none;
-}
-
-.primaryButton {
-  background-color: #0056b3;
-  color: white;
+  /* Animate buttons individually for slower motion */
+  opacity: 0;
+  transform: translateY(40px) translateX(40px);
+  animation: slideUpLeft 1.8s cubic-bezier(0.77, 0, 0.175, 1) 0.8s both;
 }
 
 .secondaryButton {
   background-color: transparent;
   color: white;
   border: 2px solid white;
+  /* Slightly delay secondary button for stagger */
+  animation-delay: 1s;
+}
+
+.primaryButton {
+  background-color: #0056b3;
+  color: white;
 }
 
 .primaryButton:hover {
