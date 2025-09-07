@@ -13,7 +13,7 @@ import styles from './PerformanceBonds.module.css';
 const PerformanceBonds = () => {
   return (
     <div className={styles.performanceBonds}>
-      <Title>Surety Limited – Trusted Performance Bond Solutions Worldwide</Title>
+      <Title>Surety Limited | Trusted Performance Bond Solutions Worldwide</Title>
       <Meta name="description" content="Tailored performance bonds designed to match your project size, risk, & industry needs. We ensure efficiency, compliance, & peace of mind for every client." />
       <Meta name="keywords" content="Performance Bonds, Bond insurance brokers, Best performance bond rates worldwide, Performance bond services for contractors, Contract bonds, Surety bonds, International surety services, Bid bonds and performance bonds, Advance payment guarantees, Surety, Construction Bonds, bid bond, Insurance, Project Security, Surety Limited" />
       <Meta property="og:title" content="Performance Bonds | Surety Limited" />
