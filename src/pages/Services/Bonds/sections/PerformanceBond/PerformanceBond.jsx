@@ -1,5 +1,6 @@
 import React from 'react';
 import { CheckCircle, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import styles from './PerformanceBond.module.css';
 
 const PerformanceBond = () => {
@@ -37,8 +38,10 @@ const PerformanceBond = () => {
               <h3 className={styles.cardTitle}>Get Your Performance Bond</h3>
               <p className={styles.cardDescription}>Secure your project with competitive rates and swift processing</p>
               <button className={styles.ctaButton}>
-                <span>Request Quote</span>
-                <ArrowRight className={styles.buttonIcon} />
+                <Link to="/services/bonds/performance-bonds" className={styles.ctaButtonLink}>
+                  <span>Request Quote</span>
+                  <ArrowRight className={styles.buttonIcon} />
+                </Link>
               </button>
             </div>
           </div>

@@ -1,0 +1,244 @@
+.heroSection {
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+  color: white;
+  padding: 200px 0 100px;
+  position: relative;
+  overflow: hidden;
+}
+
+.heroSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ffffff" fill-opacity="0.05"><circle cx="30" cy="30" r="1.5"/></g></svg>');
+  pointer-events: none;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.heading {
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.subtext {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  opacity: 0.9;
+  margin: 0;
+  max-width: 500px;
+}
+
+.ctaButton {
+  background: #ffffff;
+  color: #1e3a8a;
+  border: none;
+  padding: 16px 32px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  background: #f8fafc;
+}
+
+.ctaButton:active {
+  transform: translateY(0);
+}
+
+.visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.visualElement {
+  width: 400px;
+  height: 300px;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  position: relative;
+}
+
+.visualElement::before {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  right: 20%;
+  bottom: 20%;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.visualElement::after {
+  content: '';
+  position: absolute;
+  top: 40%;
+  left: 40%;
+  right: 40%;
+  bottom: 40%;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+}
+
+/* Tablet Styles */
+@media (max-width: 1024px) {
+  .heroSection {
+    padding: 100px 0 80px;
+
+  }
+  
+  .container {
+    gap: 40px;
+  }
+  
+  .heading {
+    font-size: 2rem;
+    text-align: justify;
+  }
+  
+  .subtext {
+    font-size: 1.1rem;
+    text-align: justify;
+  }
+  
+  .visualElement {
+    width: 300px;
+    height: 250px;
+  }
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .heroSection {
+    padding: 100px 0 60px;
+  }
+  
+  .container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    text-align: center;
+  }
+  
+  .heading {
+    font-size: 2.2rem;
+    text-align: justify;
+  }
+  
+  .subtext {
+    font-size: 1rem;
+    max-width: 100%;
+    text-align: justify;
+  }
+  
+  .ctaButton {
+    align-self: center;
+    padding: 14px 28px;
+    font-size: 1rem;
+  }
+  
+  .visualElement {
+    width: 250px;
+    height: 200px;
+  }
+}
+
+/* Small Mobile Styles */
+@media (max-width: 480px) {
+  .heroSection {
+    padding: 100px 0 50px;
+  }
+  
+  .container {
+    padding: 0 16px;
+  }
+  
+  .heading {
+    font-size: 1.8rem;
+    line-height: 1.2;
+  }
+  
+  .subtext {
+    font-size: 0.95rem;
+  }
+  
+  .ctaButton {
+    padding: 12px 24px;
+    font-size: 0.95rem;
+    width: 100%;
+    max-width: 280px;
+  }
+  
+  .visualElement {
+    width: 200px;
+    height: 150px;
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .ctaButton {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* Touch device optimizations */
+@media (pointer: coarse) {
+  .ctaButton {
+    min-height: 48px;
+    padding: 14px 32px;
+  }
+}
+
+/* Desktop Styles */
+@media (min-width: 1025px) {
+  .container {
+    grid-template-columns: 1fr 1fr;
+    text-align: left;
+  }
+  .heading {
+    text-align: left;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  .subtext {
+    text-align: justify;
+    font-size: 1.25rem;
+    max-width: 600px;
+    margin-left: 0;
+    margin-right: auto;
+  }
+}
