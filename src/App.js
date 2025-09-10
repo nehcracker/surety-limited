@@ -13,6 +13,7 @@ import useScrollToTop from './hooks/useScrollToTop';
 import Insurance from './pages/Services/Insurance/GeneralInsurance/GeneralInsurance'; // fixed import path
 import QuoteRequest from './pages/QuoteRequest/QuoteRequest';
 import PerformanceBonds from './pages/Services/Bonds/PerformanceBonds/PerformanceBonds';
+import Sitemap from './pages/Sitemap/Sitemap';
 import './App.css';
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
               <Route path="/services/insurance" element={<Insurance />} />
               <Route path="/quote-request" element={<QuoteRequest />} />
               <Route path="/services/bonds/performance-bonds" element={<PerformanceBonds />} />
+              <Route path="/sitemap" element={<Sitemap />} />
             </Routes>
           </main>
           <Footer />

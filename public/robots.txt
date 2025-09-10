@@ -1,3 +1,42 @@
 # https://www.robotstxt.org/robotstxt.html
+
+# robots.txt for your website
+# This file tells search engines which pages they can and cannot crawl
+
+# Allow all web crawlers to access all content
 User-agent: *
-Disallow:
+Allow: /
+
+# Disallow access to admin areas, development files, and private content
+# (Uncomment these lines if you have such directories)
+# Disallow: /admin/
+# Disallow: /private/
+# Disallow: /dev/
+# Disallow: /test/
+# Disallow: /*.json$
+# Disallow: /api/
+
+# Prevent indexing of duplicate content or utility pages
+# (Add any pages you don't want indexed)
+# Disallow: /print-version/
+# Disallow: /mobile-version/
+
+# Allow access to CSS and JavaScript files (important for proper rendering)
+Allow: /static/css/
+Allow: /static/js/
+Allow: /*.css$
+Allow: /*.js$
+
+# Sitemap location (replace with your actual domain)
+Sitemap: https://suretylimited.com/sitemap.xml
+
+# Optional: Specify crawl delay (time in seconds between requests)
+# Uncomment the line below if your server is experiencing high load from crawlers
+# Crawl-delay: 1
+
+# Host directive (specify your preferred domain)
+# Host: https://suretylimited.com
+
+# Additional sitemaps (if you have multiple sitemaps)
+# Sitemap: https://suretylimited.com/sitemap-images.xml
+# Sitemap: https://suretylimited.com/sitemap-news.xml
