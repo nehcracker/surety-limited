@@ -81,9 +81,21 @@ const ContactFormSection = () => {
     }
   };
 
+  const mapInquiryTypeToServiceType = (inquiryType) => {
+    const mapping = {
+      'Quote Request': 'other',
+      'Bond Request': 'bonds',
+      'Partnership': 'other',
+      'General Inquiry': 'other',
+      'Technical Support': 'other',
+      'Other': 'other'
+    };
+    return mapping[inquiryType] || 'other';
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (!validateForm()) {
       return;
     }
@@ -91,34 +103,52 @@ const ContactFormSection = () => {
     setFormStatus({ loading: true, success: false, error: null });
 
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      // Here you would make the actual API call
-      // const response = await fetch('/api/contact', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(formData)
-      // });
+      const payload = {
+        name: formData.fullName,
+        email: formData.email,
+        phone: formData.phone,
+        industry: 'other', // Default since form doesn't have industry field
+        serviceType: mapInquiryTypeToServiceType(formData.inquiryType),
+        message: formData.message,
+        company: formData.company || undefined
+      };
 
-      setFormStatus({ loading: false, success: true, error: null });
-      
-      // Reset form on success
-      setFormData({
-        fullName: '',
-        company: '',
-        email: '',
-        phone: '',
-        country: '',
-        inquiryType: '',
-        message: ''
+      const response = await fetch('https://quote-request-worker.nehlmac4.workers.dev', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
       });
 
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        setFormStatus({ loading: false, success: true, error: null });
+
+        // Reset form on success
+        setFormData({
+          fullName: '',
+          company: '',
+          email: '',
+          phone: '',
+          country: '',
+          inquiryType: '',
+          message: ''
+        });
+      } else {
+        setFormStatus({
+          loading: false,
+          success: false,
+          error: result.error || 'Failed to send message. Please try again or contact us directly.'
+        });
+      }
     } catch (error) {
-      setFormStatus({ 
-        loading: false, 
-        success: false, 
-        error: 'Failed to send message. Please try again or contact us directly.' 
+      console.error('Error submitting form:', error);
+      setFormStatus({
+        loading: false,
+        success: false,
+        error: 'Network error. Please check your connection and try again.'
       });
     }
   };
