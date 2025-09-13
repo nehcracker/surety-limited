@@ -18,7 +18,7 @@ const RequestQuote = () => {
   const [submitError, setSubmitError] = useState('');
 
   // Cloudflare Worker endpoint
-  const WORKER_ENDPOINT = 'https://quote-request-worker.nehlimac4.workers.dev';
+  const WORKER_ENDPOINT = 'https://quote-request-worker.nehlmac4.workers.dev';
 
   const handleChange = (e) => {
     const { name, value } = e.target;
