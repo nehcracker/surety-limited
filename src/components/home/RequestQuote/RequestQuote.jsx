@@ -15,6 +15,10 @@ const RequestQuote = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [focusedField, setFocusedField] = useState('');
+  const [submitError, setSubmitError] = useState('');
+
+  // Cloudflare Worker endpoint
+  const WORKER_ENDPOINT = 'https://quote-request-worker.nehlimac4.workers.dev';
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,32 +26,119 @@ const RequestQuote = () => {
       ...prev,
       [name]: value
     }));
+    // Clear any previous error when user starts typing
+    if (submitError) {
+      setSubmitError('');
+    }
   };
 
-  const handleSubmit = (e) => {
+  const validateForm = () => {
+    const requiredFields = ['name', 'email', 'phone', 'industry', 'serviceType'];
+    const errors = [];
+
+    // Check required fields
+    for (const field of requiredFields) {
+      if (!formData[field] || formData[field].trim() === '') {
+        errors.push(`${field.charAt(0).toUpperCase() + field.slice(1)} is required`);
+      }
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (formData.email && !emailRegex.test(formData.email)) {
+      errors.push('Please enter a valid email address');
+    }
+
+    // Phone validation (basic)
+    const phoneRegex = /^[+]?[1-9][\d]{0,15}$/;
+    if (formData.phone && !phoneRegex.test(formData.phone.replace(/[\s-()]/g, ''))) {
+      errors.push('Please enter a valid phone number');
+    }
+
+    return errors;
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    // Clear previous errors
+    setSubmitError('');
+    
+    // Client-side validation
+    const validationErrors = validateForm();
+    if (validationErrors.length > 0) {
+      setSubmitError(validationErrors[0]); // Show first error
+      return;
+    }
+
     setIsSubmitting(true);
     
-    // Simulate API call
-    setTimeout(() => {
-      console.log('Form submitted:', formData);
-      setIsSubmitting(false);
-      setFormSubmitted(true);
-      
-      // Reset form after 3 seconds
-      setTimeout(() => {
-        setFormSubmitted(false);
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          company: '',
-          industry: '',
-          serviceType: '',
-          message: ''
+    try {
+      const response = await fetch(WORKER_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name.trim(),
+          email: formData.email.trim().toLowerCase(),
+          phone: formData.phone.trim(),
+          company: formData.company.trim(),
+          industry: formData.industry,
+          serviceType: formData.serviceType,
+          message: formData.message.trim()
+        }),
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        console.log('Form submitted successfully:', result);
+        setFormSubmitted(true);
+        
+        // Reset form after 5 seconds (increased from 3 for better UX)
+        setTimeout(() => {
+          setFormSubmitted(false);
+          setFormData({
+            name: '',
+            email: '',
+            phone: '',
+            company: '',
+            industry: '',
+            serviceType: '',
+            message: ''
+          });
+        }, 5000);
+      } else {
+        // Handle API errors
+        const errorMessage = result.error || 'Failed to submit form. Please try again.';
+        setSubmitError(errorMessage);
+        
+        // Log detailed error for debugging
+        console.error('Form submission failed:', {
+          status: response.status,
+          statusText: response.statusText,
+          result
         });
-      }, 3000);
-    }, 1000);
+      }
+    } catch (error) {
+      console.error('Network error submitting form:', error);
+      
+      // Handle different types of errors
+      let errorMessage = 'Unable to submit your request. ';
+      
+      if (error.name === 'TypeError' && error.message.includes('fetch')) {
+        errorMessage += 'Please check your internet connection and try again.';
+      } else if (error.name === 'AbortError') {
+        errorMessage += 'Request timed out. Please try again.';
+      } else {
+        errorMessage += 'Please try again in a few moments.';
+      }
+      
+      setSubmitError(errorMessage);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const industryOptions = [
@@ -84,6 +175,7 @@ const RequestQuote = () => {
           required={required}
           placeholder={placeholder}
           className={styles.inputField}
+          disabled={isSubmitting}
         />
         <div className={styles.inputIcon}>
           {icon}
@@ -106,6 +198,7 @@ const RequestQuote = () => {
           onBlur={() => setFocusedField('')}
           required={required}
           className={styles.selectField}
+          disabled={isSubmitting}
         >
           {options.map(option => (
             <option key={option.value} value={option.value}>
@@ -142,6 +235,7 @@ const RequestQuote = () => {
           rows={rows}
           placeholder={placeholder}
           className={styles.textareaField}
+          disabled={isSubmitting}
         />
         <div className={styles.textareaIcon}>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -188,9 +282,25 @@ const RequestQuote = () => {
                     Your quote request has been submitted successfully. 
                     Our team will contact you within 24 hours.
                   </p>
+                  <div className={styles.successDetails}>
+                    <p>📧 Confirmation sent to: <strong>{formData.email}</strong></p>
+                    <p>📞 We'll call you at: <strong>{formData.phone}</strong></p>
+                  </div>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className={styles.form}>
+                  {/* Error Message Display */}
+                  {submitError && (
+                    <div className={styles.errorMessage}>
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="15" y1="9" x2="9" y2="15"/>
+                        <line x1="9" y1="9" x2="15" y2="15"/>
+                      </svg>
+                      <span>{submitError}</span>
+                    </div>
+                  )}
+
                   <div className={styles.formGrid}>
                     <InputField
                       label="Full Name"
@@ -285,16 +395,23 @@ const RequestQuote = () => {
                       {isSubmitting ? (
                         <div className={styles.loadingContent}>
                           <div className={styles.spinner}></div>
-                          Processing...
+                          Submitting Your Request...
                         </div>
                       ) : (
-                        'Get Your Free Quote'
+                        <>
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ marginRight: '8px' }}>
+                            <path d="M22 2L11 13"/>
+                            <polygon points="22,2 15,22 11,13 2,9"/>
+                          </svg>
+                          Get Your Free Quote
+                        </>
                       )}
                     </button>
                   </div>
 
                   <div className={styles.disclaimer}>
                     <p>🔒 Your information is secure and will never be shared with third parties.</p>
+                    <p>⚡ Average response time: 2-4 hours during business hours</p>
                   </div>
                 </form>
               )}

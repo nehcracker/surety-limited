@@ -1,0 +1,6 @@
+name = "quote-request-worker"
+compatibility_date = "2025-09-13"
+main = "index.js"
+
+# Environment variables will be set via wrangler secret commands
+# Don't put actual secrets here - they'll be set separately
