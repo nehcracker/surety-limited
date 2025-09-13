@@ -211,7 +211,8 @@ async function sendQuoteRequestEmail(formData, env) {
       },
       body: JSON.stringify({
         from: {
-          address: env.FROM_EMAIL || 'noreply@suretylimited.com'
+          address: env.FROM_EMAIL || 'noreply@suretylimited.com',
+		  name: 'Surety Limited'
         },
         to: [
           {
@@ -219,6 +220,12 @@ async function sendQuoteRequestEmail(formData, env) {
               address: env.TO_EMAIL || 'info@suretylimited.com',
               name: 'Surety Limited'
             }
+          }
+        ],
+        reply_to: [
+          {
+            address: formData.email,
+            name: formData.name
           }
         ],
         subject: `New Quote Request from ${formData.name}`,
