@@ -212,7 +212,7 @@ async function sendQuoteRequestEmail(formData, env) {
       body: JSON.stringify({
         from: {
           address: env.FROM_EMAIL || 'noreply@suretylimited.com',
-		  name: 'Surety Limited'
+		      name: 'Surety Limited'
         },
         to: [
           {

@@ -113,10 +113,23 @@ const QuoteForm = ({ onSubmit, isSubmitted }) => {
     return newErrors;
   };
 
+  const mapCoverTypeToServiceType = (coverType) => {
+    const mapping = {
+      'Surety & Bonds': 'bonds',
+      'Property Insurance': 'insurance',
+      'Motor Insurance': 'insurance',
+      'Marine & Aviation': 'insurance',
+      'Travel Insurance': 'insurance',
+      'Cyber Liability': 'insurance',
+      'Other': 'other'
+    };
+    return mapping[coverType] || 'other';
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formErrors = validateForm();
-    
+
     if (Object.keys(formErrors).length > 0) {
       setErrors(formErrors);
       return;
@@ -124,12 +137,41 @@ const QuoteForm = ({ onSubmit, isSubmitted }) => {
 
     setIsLoading(true);
     setErrors({});
-    
-    // Simulate API call
-    setTimeout(() => {
+
+    try {
+      const payload = {
+        name: formData.fullName,
+        email: formData.email,
+        phone: formData.phone,
+        industry: 'other', // Default since form doesn't have industry field
+        serviceType: mapCoverTypeToServiceType(formData.coverType),
+        message: formData.additionalInfo || formData.coverageAmount
+          ? `${formData.additionalInfo ? formData.additionalInfo : ''}${formData.coverageAmount ? `\nCoverage Amount: ${formData.coverageAmount}` : ''}`.trim()
+          : undefined
+      };
+
+      const response = await fetch('https://quote-request-worker.nehlmac4.workers.dev', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        setIsLoading(false);
+        onSubmit();
+      } else {
+        setIsLoading(false);
+        setErrors({ submit: result.error || 'Failed to submit quote request. Please try again.' });
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
       setIsLoading(false);
-      onSubmit();
-    }, 2000);
+      setErrors({ submit: 'Network error. Please check your connection and try again.' });
+    }
   };
 
   const handleChange = (e) => {
@@ -418,6 +460,12 @@ const QuoteForm = ({ onSubmit, isSubmitted }) => {
                     'Request Quote'
                   )}
                 </button>
+                {errors.submit && (
+                  <div className={styles.errorMessage}>
+                    <AlertCircle className={styles.errorIcon} />
+                    {errors.submit}
+                  </div>
+                )}
                 <p className={styles.submitNote}>
                   By submitting this form, you agree to our terms and conditions.
                 </p>
